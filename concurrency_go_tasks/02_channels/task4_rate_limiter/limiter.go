@@ -1,6 +1,6 @@
 package limiter
 
-import "time"
+import _ "time"
 
 // Limiter ограничивает количество событий до 5 в секунду.
 type Limiter struct {
