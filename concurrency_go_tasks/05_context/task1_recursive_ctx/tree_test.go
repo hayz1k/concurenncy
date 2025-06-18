@@ -25,3 +25,15 @@ func TestWalkCancel(t *testing.T) {
 		t.Fatalf("walk should have been cancelled early, visited %v", visited)
 	}
 }
+
+func TestWalkFull(t *testing.T) {
+	root := &Node{Value: 1, Children: []*Node{{Value: 2}, {Value: 3}}}
+	visited := make([]int, 0)
+	err := Walk(context.Background(), root, func(v int) { visited = append(visited, v) })
+	if err != nil {
+		t.Fatalf("не ожидали ошибку: %v", err)
+	}
+	if len(visited) != 3 {
+		t.Fatalf("ожидали пройти 3 узла, прошли %d", len(visited))
+	}
+}

@@ -16,3 +16,10 @@ func TestFib(t *testing.T) {
 		t.Fatalf("expected %d numbers, got %d", len(expected), i)
 	}
 }
+
+func TestFibZero(t *testing.T) {
+	ch := Fib(0)
+	for range ch {
+		t.Fatal("канал должен быть пуст")
+	}
+}

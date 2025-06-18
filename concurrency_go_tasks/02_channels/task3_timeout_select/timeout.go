@@ -1,24 +1,10 @@
 package timeout
 
-import (
-	"context"
-	"errors"
-	"time"
-)
+import "context"
 
+// Work выполняет длительную задачу и возвращает ошибку,
+// если она заняла больше 100 мс или контекст был отменён.
 func Work(ctx context.Context) error {
-	done := make(chan struct{})
-	go func() {
-		time.Sleep(150 * time.Millisecond)
-		close(done)
-	}()
-
-	select {
-	case <-done:
-		return nil
-	case <-ctx.Done():
-		return ctx.Err()
-	case <-time.After(100 * time.Millisecond):
-		return errors.New("timeout")
-	}
+	// TODO: реализовать через select и time.After
+	return nil
 }

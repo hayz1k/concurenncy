@@ -22,3 +22,10 @@ func TestCounter(t *testing.T) {
 		t.Fatalf("expected 1000, got %d", v)
 	}
 }
+
+func TestCounterInitialValue(t *testing.T) {
+	var c Counter
+	if v := c.Value(); v != 0 {
+		t.Fatalf("новый счётчик должен быть 0, получено %d", v)
+	}
+}

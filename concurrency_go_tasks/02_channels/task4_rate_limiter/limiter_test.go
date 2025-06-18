@@ -24,3 +24,9 @@ func TestLimiter(t *testing.T) {
 		}
 	}
 }
+
+func TestNewLimiterNotNil(t *testing.T) {
+	if NewLimiter() == nil {
+		t.Fatal("ожидался непустой лимитер")
+	}
+}

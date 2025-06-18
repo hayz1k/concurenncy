@@ -28,3 +28,12 @@ func TestCache(t *testing.T) {
 		t.Fatal("expected key to exist")
 	}
 }
+
+func TestCacheSetGet(t *testing.T) {
+	c := New()
+	c.Set("foo", 42)
+	v, ok := c.Get("foo")
+	if !ok || v != 42 {
+		t.Fatal("значение должно быть 42")
+	}
+}

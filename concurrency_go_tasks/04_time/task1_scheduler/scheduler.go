@@ -2,19 +2,8 @@ package scheduler
 
 import "time"
 
+// Every запускает f каждые d и возвращает функцию для остановки.
 func Every(d time.Duration, f func()) (stop func()) {
-	done := make(chan struct{})
-	go func() {
-		ticker := time.NewTicker(d)
-		defer ticker.Stop()
-		for {
-			select {
-			case <-ticker.C:
-				f()
-			case <-done:
-				return
-			}
-		}
-	}()
-	return func() { close(done) }
+	// TODO: периодический вызов функции с возможностью остановки
+	return nil
 }

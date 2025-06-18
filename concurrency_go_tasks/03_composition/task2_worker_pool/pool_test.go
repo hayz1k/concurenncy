@@ -17,3 +17,10 @@ func TestRunPool(t *testing.T) {
 		t.Fatal("expected parallel execution")
 	}
 }
+
+func TestRunPoolSingleWorker(t *testing.T) {
+	jobs := []int{1, 2, 3}
+	if RunPool(jobs, 1) != 6 {
+		t.Fatal("неверная сумма при одном воркере")
+	}
+}

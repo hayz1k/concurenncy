@@ -53,3 +53,11 @@ func TestBulkheadCancel(t *testing.T) {
 		t.Fatal("expected cancellation error")
 	}
 }
+
+func TestBulkheadSuccess(t *testing.T) {
+	b := New(1)
+	err := b.Do(context.Background(), func() error { return nil })
+	if err != nil {
+		t.Fatalf("не ожидали ошибку: %v", err)
+	}
+}

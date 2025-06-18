@@ -2,25 +2,14 @@ package tree
 
 import "context"
 
+// Node описывает вершину дерева со значением и дочерними узлами.
 type Node struct {
 	Value    int
 	Children []*Node
 }
 
+// Walk обходит дерево в глубину и прерывается по отмене контекста.
 func Walk(ctx context.Context, n *Node, visit func(int)) error {
-	select {
-	case <-ctx.Done():
-		return ctx.Err()
-	default:
-	}
-	if n == nil {
-		return nil
-	}
-	visit(n.Value)
-	for _, child := range n.Children {
-		if err := Walk(ctx, child, visit); err != nil {
-			return err
-		}
-	}
+	// TODO: реализовать рекурсивный обход с проверкой ctx.Done()
 	return nil
 }

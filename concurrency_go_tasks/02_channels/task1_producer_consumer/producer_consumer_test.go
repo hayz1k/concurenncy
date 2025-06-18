@@ -21,3 +21,14 @@ func TestProducerConsumer(t *testing.T) {
 		}
 	}
 }
+
+func TestProducerConsumerFirstLast(t *testing.T) {
+	var buf bytes.Buffer
+	Run(&buf)
+	output := strings.Split(strings.TrimSpace(buf.String()), "\n")
+	if len(output) > 0 {
+		if output[0] != "1" || output[len(output)-1] != "10" {
+			t.Fatal("последовательность должна начинаться с 1 и заканчиваться 10")
+		}
+	}
+}

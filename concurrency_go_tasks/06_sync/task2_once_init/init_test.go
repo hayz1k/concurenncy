@@ -19,3 +19,10 @@ func TestInitOnce(t *testing.T) {
 		t.Fatal("resource not initialized")
 	}
 }
+
+func TestInitializedMultiple(t *testing.T) {
+	Init()
+	if !Initialized() || !Initialized() {
+		t.Fatal("ожидалось истинное значение инициализации")
+	}
+}

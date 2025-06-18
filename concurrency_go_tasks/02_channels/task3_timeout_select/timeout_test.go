@@ -11,3 +11,11 @@ func TestWorkTimeout(t *testing.T) {
 		t.Fatal("expected timeout error")
 	}
 }
+
+func TestWorkCanceled(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if err := Work(ctx); err == nil {
+		t.Fatal("ожидалась ошибка отмены контекста")
+	}
+}

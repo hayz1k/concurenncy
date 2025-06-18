@@ -31,3 +31,12 @@ func TestPingPong(t *testing.T) {
 		t.Fatalf("expected 5 ping and 5 pong, got %d ping and %d pong", pingCount, pongCount)
 	}
 }
+
+func TestPingPongStartsWithPing(t *testing.T) {
+	var buf bytes.Buffer
+	PingPong(&buf)
+	output := strings.Split(strings.TrimSpace(buf.String()), "\n")
+	if len(output) == 0 || output[0] != "ping" {
+		t.Fatal("первой строкой должен быть ping")
+	}
+}

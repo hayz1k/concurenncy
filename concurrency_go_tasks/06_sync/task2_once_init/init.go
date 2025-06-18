@@ -1,23 +1,19 @@
 package initonce
 
-import (
-	"sync"
-	"time"
-)
+import "sync"
 
 var (
 	once        sync.Once
 	initialized bool
 )
 
+// Init выполняет однократную инициализацию ресурса.
 func Init() {
-	once.Do(func() {
-		time.Sleep(10 * time.Millisecond)
-		initialized = true
-	})
+	// TODO: инициализировать ресурс через sync.Once
 }
 
+// Initialized возвращает, был ли инициализирован ресурс.
 func Initialized() bool {
-	Init()
-	return initialized
+	// TODO: вернуть признак инициализации
+	return false
 }
